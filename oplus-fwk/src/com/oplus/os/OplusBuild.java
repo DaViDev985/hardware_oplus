@@ -73,7 +73,7 @@ public class OplusBuild {
     }
 
     public static void setDeviceName(Context context, String deviceName) {
-        
+
     }
 
     private static String getString(String property) {

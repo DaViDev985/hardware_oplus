@@ -86,5 +86,5 @@ public final class OplusCommonConfig {
             }
         }
         return null;
-    }    
+    }
 }

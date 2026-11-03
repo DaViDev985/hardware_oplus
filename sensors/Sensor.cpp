@@ -95,7 +95,7 @@ const SensorInfo& Sensor::getSensorInfo() const {
 
 void Sensor::batch(int32_t samplingPeriodNs) {
     samplingPeriodNs =
-        std::clamp(samplingPeriodNs, mSensorInfo.minDelay * 1000, mSensorInfo.maxDelay * 1000);
+            std::clamp(samplingPeriodNs, mSensorInfo.minDelay * 1000, mSensorInfo.maxDelay * 1000);
 
     if (mSamplingPeriodNs != samplingPeriodNs) {
         mSamplingPeriodNs = samplingPeriodNs;
@@ -214,8 +214,8 @@ OneShotSensor::OneShotSensor(int32_t sensorHandle, ISensorsEventCallback* callba
 }
 
 SysfsPollingOneShotSensor::SysfsPollingOneShotSensor(
-    int32_t sensorHandle, ISensorsEventCallback* callback, const std::string& pollPath,
-    const std::string& name, const std::string& typeAsString, SensorType type)
+        int32_t sensorHandle, ISensorsEventCallback* callback, const std::string& pollPath,
+        const std::string& name, const std::string& typeAsString, SensorType type)
     : OneShotSensor(sensorHandle, callback) {
     mSensorInfo.name = name;
     mSensorInfo.type = type;
@@ -245,13 +245,13 @@ SysfsPollingOneShotSensor::SysfsPollingOneShotSensor(
     }
 
     mPolls[0] = {
-        .fd = mWaitPipeFd[0],
-        .events = POLLIN,
+            .fd = mWaitPipeFd[0],
+            .events = POLLIN,
     };
 
     mPolls[1] = {
-        .fd = mPollFd,
-        .events = POLLERR | POLLPRI,
+            .fd = mPollFd,
+            .events = POLLERR | POLLPRI,
     };
 }
 
@@ -312,7 +312,7 @@ void SysfsPollingOneShotSensor::run() {
             }
 
             if (mPolls[1].revents == mPolls[1].events && readBool(mPollFd, true /* seek */) &&
-		reportEvent) {
+                reportEvent) {
                 activate(false, false, false);
                 mCallback->postEvents(readEvents(), isWakeUpSensor());
             } else if (mPolls[0].revents == mPolls[0].events) {
@@ -348,19 +348,18 @@ void SysfsPollingOneShotSensor::fillEventData(Event& event) {
 }
 
 bool IsPathValid(const std::string& path) {
-  std::ifstream file(path);
-  return file.good();
+    std::ifstream file(path);
+    return file.good();
 }
 
 std::string GetPollPath(const char** array) {
-  for (; *array != NULL; ++array) {
-    const char* path = *array;
+    for (; *array != NULL; ++array) {
+        const char* path = *array;
 
-    if (IsPathValid(path))
-      return path;
-  }
+        if (IsPathValid(path)) return path;
+    }
 
-  return "";
+    return "";
 }
 
 }  // namespace implementation
