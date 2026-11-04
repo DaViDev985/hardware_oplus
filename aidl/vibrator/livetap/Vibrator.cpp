@@ -33,7 +33,7 @@ namespace {
 constexpr int32_t kMinLevel = 100;
 constexpr int32_t kMaxLevel = 2400;
 constexpr int32_t kDefaultOnLevel = 1600;
-constexpr int32_t kHeBaselineLevel = 1800;
+constexpr int32_t kHeBaselineLevel = 2400;
 constexpr int32_t kLevelStep = 25;
 constexpr float kLightScale = 0.60f;
 constexpr float kMediumScale = 0.80f;
@@ -89,19 +89,19 @@ float getStrengthScale(EffectStrength strength) {
 EffectProfile getEffectProfile(Effect effect) {
     switch (effect) {
         case Effect::TEXTURE_TICK:
-            return {69, 55};
+            return {69, 100};
         case Effect::TICK:
-            return {60, 78};
+            return {60, 100};
         case Effect::POP:
-            return {5, 78};
+            return {5, 90};
         case Effect::CLICK:
         case Effect::DOUBLE_CLICK:
-            return {5, 88};
+            return {5, 95};
         case Effect::HEAVY_CLICK:
         case Effect::THUD:
             return {5, 100};
         default:
-            return {5, 88};
+            return {5, 95};
     }
 }
 
