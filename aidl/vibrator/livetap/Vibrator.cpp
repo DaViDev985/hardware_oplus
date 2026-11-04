@@ -89,19 +89,19 @@ float getStrengthScale(EffectStrength strength) {
 EffectProfile getEffectProfile(Effect effect) {
     switch (effect) {
         case Effect::TEXTURE_TICK:
-            return {69, 55};
+            return {69, 70};
         case Effect::TICK:
-            return {60, 78};
+            return {60, 90};
         case Effect::POP:
-            return {5, 78};
+            return {5, 90};
         case Effect::CLICK:
         case Effect::DOUBLE_CLICK:
-            return {5, 88};
+            return {5, 95};
         case Effect::HEAVY_CLICK:
         case Effect::THUD:
             return {5, 100};
         default:
-            return {5, 88};
+            return {5, 95};
     }
 }
 
